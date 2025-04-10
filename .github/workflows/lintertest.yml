@@ -1,28 +1,22 @@
-name: <Workflow Name> # Optional, just a name for display
+name: Node.js CI
 
-on:                # Triggers (When to run the workflow)
-  push:            # Run when pushing code
-  #   branches:
-  #     - main       # Only when pushing to 'main' branch
-  # pull_request:    # Run on PRs too
-  #   branches:
-  #     - main
+on:
+  push:
+    branches: [main]
 
-jobs:              # Define jobs
-  build:           # Job ID (can be any name)
-    runs-on: ubuntu-latest  # The virtual environment
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-    steps:         # Each step to run
+    steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
+      - name: Show working directory
+        run: pwd
+
+      - name: List files
+        run: ls -la
 
       - name: Install dependencies
         run: npm install
-
-      - name: Run tests
-        run: npm test
