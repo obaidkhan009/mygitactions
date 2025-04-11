@@ -16,4 +16,4 @@ jobs:
           python-version: 3.11
 
       - name: Run Python script
-        run: python test_script.py
+        run: python test.py
